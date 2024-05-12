@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Load data to sqlite",
+        "extract_provider": {
+            "script": "extract_csv.py",
+            "method": "extract",
+            "args": {}
+        },
+        "steps": [
+            {
+                "name": "step_1",
+                "script": "transform.py",
+                "method": "step_1",
+                "args": {},
+                "type": "Transform"
+            }
+        ],
+        "load_provider": {
+            "script": "sqlite.py",
+            "method": "save_to_sqlite",
+            "args": {
+                "destination": "fake",
+                "connection_string": "sqlite:///my_lite_store.db"
+            }
+        }
+    }
+]
